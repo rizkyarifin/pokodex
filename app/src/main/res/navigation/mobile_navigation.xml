@@ -43,6 +43,9 @@
         android:name="id.rizky.arifin.ui.detail.DetailFragment"
         android:label="DetailFragment" >
         <argument android:name="pokemonName" />
+        <action
+            android:id="@+id/action_detailFragment_to_nav_pokemon_type"
+            app:destination="@id/nav_pokemon_type" />
     </fragment>
 
 </navigation>

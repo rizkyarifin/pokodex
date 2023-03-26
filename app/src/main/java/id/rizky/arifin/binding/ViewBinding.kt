@@ -1,8 +1,10 @@
 package id.rizky.arifin.binding
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -10,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.skydoves.androidribbon.RibbonRecyclerView
 import com.skydoves.androidribbon.ribbonView
