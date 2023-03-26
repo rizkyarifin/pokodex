@@ -1,0 +1,92 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="id.rizky.arifin.ui.home.PokeDexListViewModel" />
+
+        <variable
+            name="adapter"
+            type="id.rizky.arifin.ui.home.PokeDexListAdapter" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/pokedex_list_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:overScrollMode="never"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_pokedex_list_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="@string/pokedex_list_title"
+                android:textColor="@color/darkgrey"
+                android:textSize="@dimen/_28ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_pokedex_list_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                app:totalData="@{vm.pokemonList}"
+                android:textColor="@color/darkgrey"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_pokedex_list_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_pokedex_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:adapter="@{adapter}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_list_subtitle"
+                app:submitList="@{vm.pokemonList}"
+                app:toast="@{vm.toastMessage}"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_pokedex_list" />
+
+            <TextView
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/load_more"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/_14ssp"
+                android:paddingBottom="@dimen/_24sdp"
+                android:textColor="@color/darkgrey"
+                app:gone="@{!vm.loading &amp;&amp; adapter.submitted}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_pokedex_list" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

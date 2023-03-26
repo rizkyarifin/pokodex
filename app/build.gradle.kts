@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 @Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.android.application)
@@ -45,6 +44,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    buildFeatures {
+        dataBinding = true
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -55,18 +57,6 @@ android {
          jvmTarget = "11"
     }
 
-    buildFeatures {
-        compose = true
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
-
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -75,41 +65,54 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":core-ui"))
     implementation(project(":core-data"))
-    implementation(project(":feature-home"))
-    androidTestImplementation(project(":core-testing"))
+    implementation(project(":core-model"))
 
-    // Core Android dependencies
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    // androidx
+    implementation(libs.material)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle)
+    implementation(libs.androidx.startup)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
-    // Hilt Dependency Injection
+    // data binding
+    implementation(libs.bindables)
+
+    // di
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    // Hilt and instrumented tests.
-    androidTestImplementation(libs.hilt.android.testing)
-    kaptAndroidTest(libs.hilt.android.compiler)
-    // Hilt and Robolectric tests.
-    testImplementation(libs.hilt.android.testing)
-    kaptTest(libs.hilt.android.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
 
-    // Arch Components
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
+    // coroutines
+    implementation(libs.coroutines)
 
-    // Compose
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    // Tooling
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    // Instrumented tests
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // whatIf
+    implementation(libs.whatif)
+
+    // image loading
+    implementation(libs.glide)
+    implementation(libs.glide.palette)
+
+    // bundler
+    implementation(libs.bundler)
+
+    // transformation animation
+    implementation(libs.transformationLayout)
+
+    // recyclerView
+    implementation(libs.recyclerview)
+    implementation(libs.baseAdapter)
+
+    // sdp and ssp
+    implementation(libs.sdp)
+    implementation(libs.ssp)
+
+    // custom views
+    implementation(libs.rainbow)
+    implementation(libs.androidRibbon)
+    implementation(libs.progressView)
 
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)

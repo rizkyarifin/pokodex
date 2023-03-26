@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="id.rizky.arifin.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:background="@drawable/rounded_corner_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundTint="@color/yellow"
+                app:gone="@{!vm.loading}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/content_detail"
+                layout="@layout/content_pokemon_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:gone="@{vm.loading}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_more_detail"
+                android:layout_width="@dimen/_180sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:backgroundTint="@color/darkyellow"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/more_detail_label"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_14ssp"
+                app:cornerRadius="@dimen/_8sdp"
+                app:gone="@{vm.loading}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/content_detail" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_400sdp"
+                app:gone="@{!vm.loading}"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_more_detail" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

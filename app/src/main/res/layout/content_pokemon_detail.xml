@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="vm"
+            type="id.rizky.arifin.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@{vm.pokemonDetail.name}"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_28ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pokemon Name" />
+
+        <ImageView
+            android:id="@+id/tv_pokedex_detail_image"
+            loadImage="@{vm.pokemonDetail.imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_name"
+            app:toast="@{vm.toastMessage}"
+            tools:src="@mipmap/img_placeholder_pokemon_detail" />
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_weight_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/weight_label"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_image" />
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_weight_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@{vm.pokemonDetail.weightString}"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_weight_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_image"
+            tools:text="9999" />
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_height_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/height_label"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_weight_label" />
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_height_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@{vm.pokemonDetail.heightString}"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_height_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_pokedex_detail_height_label"
+            tools:text="9999" />
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_abilities_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/abilities_label"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_height_label" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_abilities"
+            submitList="@{vm.pokemonDetail.getAbilitiesWithPrefix}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_abilities_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_height_value"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_pokemon_ability" />
+
+        <TextView
+            android:id="@+id/tv_pokedex_detail_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/type_label"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/rv_abilities" />
+
+        <com.skydoves.androidribbon.RibbonRecyclerView
+            android:id="@+id/rv_types"
+            bindPokemonTypes="@{vm.pokemonDetail.types}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_type_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_pokedex_detail_type_label"
+            app:ribbon_recycler_orientation="horizontal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

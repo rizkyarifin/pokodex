@@ -16,4 +16,26 @@
 
 <resources>
     <string name="app_name">PokeDex</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_pokemon_type">Pokemon Type</string>
+
+    <string name="content_home_title">All the Pokémon data you\'ll ever need in one place!</string>
+    <string name="content_home_subtitle">Thousands of data compiled into one place</string>
+    <string name="content_home_button_label">Check PokèDex</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pokedex_list_title">PokèDex</string>
+    <string name="load_more">Load More ...</string>
+    <string name="weight_label">Weight :</string>
+    <string name="height_label">Height :</string>
+    <string name="abilities_label">Abilities :</string>
+    <string name="more_detail_label">More Detail</string>
+    <string name="type_label">Type :</string>
+    <string name="other_images_label">Other Images :</string>
+    <string name="stats_label">Stats :</string>
 </resources>

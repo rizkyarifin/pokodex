@@ -1,0 +1,80 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintVertical_chainStyle="packed">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_content_home"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_240sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_content_home_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:src="@mipmap/ic_home_pokemon" />
+
+        <TextView
+            android:id="@+id/tv_content_home_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:fontFamily="@font/poppins_bold"
+            android:lineSpacingExtra="@dimen/_35sdp"
+            android:lineSpacingMultiplier="0"
+            android:text="@string/content_home_title"
+            android:textColor="@color/darkgrey"
+            android:textSize="@dimen/_24ssp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_content_home_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_content_home"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/tv_content_home_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="@dimen/_20sdp"
+            android:lineSpacingMultiplier="0"
+            android:text="@string/content_home_subtitle"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_check_pokedex"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content_home_title"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:layout_editor_absoluteX="21dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_check_pokedex"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:backgroundTint="@color/darkyellow"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/content_home_button_label"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_14ssp"
+            app:cornerRadius="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content_home_subtitle"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
