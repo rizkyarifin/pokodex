@@ -45,9 +45,11 @@ class PokemonTypeFragment :
 
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                (requireActivity() as MainActivity).resetMenuStateHome()
                 isEnabled = false
-                requireActivity().onBackPressedDispatcher.onBackPressed()
+                if (isAdded) {
+                    (requireActivity() as MainActivity).resetMenuStateHome()
+                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                }
             }
         })
     }
