@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.skydoves.bindables.BindingFragment
 import id.rizky.arifin.R
 import id.rizky.arifin.databinding.FragmentHomeBinding
+import id.rizky.arifin.ui.MainActivity
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home),
     IntroFragment.IntroFragmentListener {
@@ -49,6 +50,14 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onClickCheckPokeDex() {
         binding {
             viewPager.setCurrentItem(1, true)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (isAdded) {
+            (activity as MainActivity).resetMenuStateHome()
         }
     }
 }

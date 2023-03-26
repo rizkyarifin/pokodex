@@ -42,15 +42,5 @@ class PokemonTypeFragment :
                     .navigate(R.id.action_nav_pokemon_type_to_detailFragment, args)
             }
         }
-
-        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                isEnabled = false
-                if (isAdded) {
-                    (requireActivity() as MainActivity).resetMenuStateHome()
-                    requireActivity().onBackPressedDispatcher.onBackPressed()
-                }
-            }
-        })
     }
 }

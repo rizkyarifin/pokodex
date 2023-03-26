@@ -14,75 +14,100 @@
             type="id.rizky.arifin.ui.pokemontype.PokemonAdapter" />
     </data>
 
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:background="@color/white"
-        android:fillViewport="true">
+        android:background="@color/white">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:src="@drawable/ic_eclipse_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tintColorType="@{vm.pokemonType}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_eclipse_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tintColorType="@{vm.pokemonType}" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <TextView
-                android:id="@+id/tv_pokedex_detail_name"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@{vm.pokemonType}"
-                android:textColor="@color/darkgrey"
-                android:textSize="@dimen/_24ssp"
-                app:gone="@{vm.loading}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Pokemon Name" />
+                android:layout_height="match_parent">
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foregroundTint="@color/yellow"
-                android:theme="@style/progressBarYellow"
-                app:gone="@{!vm.loading}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:elevation="0dp"
-                app:cardBackgroundColor="#E6FFFFFF"
-                app:cardCornerRadius="@dimen/_18sdp"
-                app:gone="@{vm.loading}"
-                app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_name">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_pokedex_list"
-                    adapter="@{adapter}"
+                <TextView
+                    android:id="@+id/tv_pokedex_detail_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_24sdp"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_marginHorizontal="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@{vm.pokemonType}"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="@dimen/_24ssp"
+                    app:gone="@{vm.loading}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_list_subtitle"
-                    app:submitList="@{vm.pokemon}"
-                    app:toast="@{vm.toastMessage}"
-                    tools:itemCount="4"
-                    tools:listitem="@layout/item_pokemon_table" />
-            </androidx.cardview.widget.CardView>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Pokemon Name" />
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foregroundTint="@color/yellow"
+                    android:theme="@style/progressBarYellow"
+                    app:gone="@{!vm.loading}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:elevation="0dp"
+                    app:cardBackgroundColor="#E6FFFFFF"
+                    app:cardCornerRadius="@dimen/_18sdp"
+                    app:gone="@{vm.loading}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_name"
+                    tools:layout_editor_absoluteX="31dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_pokedex_list"
+                        adapter="@{adapter}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_list_subtitle"
+                        app:submitList="@{vm.pokemon}"
+                        app:toast="@{vm.toastMessage}"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/item_pokemon_table" />
+                </androidx.cardview.widget.CardView>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

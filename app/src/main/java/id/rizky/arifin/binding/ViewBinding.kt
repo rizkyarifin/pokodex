@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
@@ -118,4 +119,14 @@ object ViewBinding {
         )
     }
 
+    @JvmStatic
+    @BindingAdapter("tintColorType")
+    fun bindTintColorType(view: ImageView, type: String) {
+        view.setColorFilter(
+            ContextCompat.getColor(
+                view.context,
+                PokemonColorsUtils.getTypeColor(type)
+            )
+        );
+    }
 }
