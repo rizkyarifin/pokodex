@@ -18,7 +18,8 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
 
         <include
             android:id="@+id/toolbar"
@@ -31,9 +32,9 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            android:paddingTop="?attr/actionBarSize"
             android:layout_marginTop="?attr/actionBarSize"
+            android:paddingTop="?attr/actionBarSize"
+            app:defaultNavHost="true"
             app:navGraph="@navigation/mobile_navigation" />
 
         <com.google.android.material.navigation.NavigationView
@@ -41,8 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:layout_marginEnd="-65dp"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -53,6 +53,8 @@
                 <include
                     android:id="@+id/include"
                     layout="@layout/nav_header_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:adapter="@{adapter}"
+                    android:layout_marginTop="@dimen/_16sdp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/include"
                     app:submitList="@{vm.menuDrawerList}"

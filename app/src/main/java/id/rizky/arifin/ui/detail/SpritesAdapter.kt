@@ -34,7 +34,7 @@ class SpritesAdapter : BindingListAdapter<String, SpritesAdapter.SpritesViewHold
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindSprites(sprites: String) {
-
+            binding.sprites = sprites
         }
     }
 }

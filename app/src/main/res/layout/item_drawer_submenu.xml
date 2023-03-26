@@ -3,17 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="menuDrawer"
-            type="id.rizky.arifin.core.model.MenuDrawer" />
-
-        <variable
-            name="adapter"
-            type="id.rizky.arifin.ui.MenuDrawerAdapter" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,11 +11,9 @@
             android:id="@+id/tv_menu_drawer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
             android:paddingHorizontal="@dimen/_18sdp"
             android:paddingVertical="@dimen/_12sdp"
-            android:text="@{menuDrawer.title}"
             android:textSize="@dimen/_11ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,16 +27,6 @@
             android:background="@color/white_grey"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_menu_drawer" />
-
-        <LinearLayout
-            android:id="@+id/layout_sub_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="@+id/separator"
-            app:layout_constraintTop_toBottomOf="@+id/separator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

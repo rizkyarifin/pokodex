@@ -8,12 +8,14 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.skydoves.androidribbon.RibbonRecyclerView
 import com.skydoves.androidribbon.ribbonView
 import com.skydoves.whatif.whatIfNotNull
 import com.skydoves.whatif.whatIfNotNullOrEmpty
+import id.rizky.arifin.R
 import id.rizky.arifin.core.model.Pokemon
 import id.rizky.arifin.utils.PokemonColorsUtils
 import id.rizky.arifin.utils.SpacesItemDecoration
@@ -56,6 +58,7 @@ object ViewBinding {
             Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
         }
     }
+
     @JvmStatic
     @BindingAdapter("bindPokemonTypes")
     fun bindPokemonTypes(recyclerView: RibbonRecyclerView, types: List<String>?) {
@@ -87,4 +90,29 @@ object ViewBinding {
             }
         }
     }
+
+    @JvmStatic
+    @BindingAdapter("shapeBackground")
+    fun bindShapeBackground(view: View, stat: String) {
+        when (stat) {
+            "hp" -> view.setBackgroundResource(R.drawable.shape_circle_red)
+            "defense" -> view.setBackgroundResource(R.drawable.shape_circle_orange)
+            "special-defense" -> view.setBackgroundResource(R.drawable.shape_cricle_green)
+            "attack" -> view.setBackgroundResource(R.drawable.shape_circle_blue)
+            "special-attack" -> view.setBackgroundResource(R.drawable.shape_circle_yellow)
+            else -> view.setBackgroundResource(R.drawable.shape_circle_ghost)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("textColorStat")
+    fun bindTextColorStat(view: TextView, stat: String) {
+        view.setTextColor(
+            AppCompatResources.getColorStateList(
+                view.context,
+                PokemonColorsUtils.getStatColor(stat)
+            )
+        )
+    }
+
 }

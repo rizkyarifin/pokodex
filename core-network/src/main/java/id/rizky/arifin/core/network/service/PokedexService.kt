@@ -2,7 +2,9 @@ package id.rizky.arifin.core.network.service
 
 import com.skydoves.sandwich.ApiResponse
 import id.rizky.arifin.core.network.model.mapper.PokemonDetailResponse
+import id.rizky.arifin.core.network.model.mapper.PokemonNameResponse
 import id.rizky.arifin.core.network.model.mapper.PokemonResponse
+import id.rizky.arifin.core.network.model.mapper.PokemonTypeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -19,4 +21,12 @@ interface PokedexService {
     suspend fun fetchPokemonDetail(
         @Path("name") name: String
     ): ApiResponse<PokemonDetailResponse>
+
+    @GET("type")
+    suspend fun fetchPokemonType(): ApiResponse<PokemonTypeResponse>
+
+    @GET("type/{name}")
+    suspend fun fetchPokemonByType(
+        @Path("name") name: String
+    ): ApiResponse<PokemonNameResponse>
 }

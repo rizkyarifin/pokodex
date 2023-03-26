@@ -1,11 +1,14 @@
 package id.rizky.arifin.ui
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
@@ -20,6 +23,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     private val viewModel: MainViewModel by viewModels()
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,17 +49,45 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             })
 
             vm = viewModel
-            adapter = MenuDrawerAdapter { titleMenuDrawer ->
+            adapter = MenuDrawerAdapter(itemOnClick = { titleMenuDrawer, position ->
+                viewModel.resetMenuState(titleMenuDrawer)
+                adapter?.notifyDataSetChanged()
                 toggleShowDrawer(drawerLayout)
-                navController.navigateUp()
-                if (titleMenuDrawer == "Pokemon Type") {
-                    navController.navigate(R.id.action_nav_home_to_nav_pokemon_type)
-                } else {
-                    navController.navigateUp()
-                }
-            }
 
+                if (titleMenuDrawer == "Home") {
+                    navController.navigateUp()
+                } else {
+                    navigateToPokemonType(navController, titleMenuDrawer)
+                }
+            }, itemSubMenuOnClick = { titleMenuDrawer, position ->
+                viewModel.resetSubMenuState(titleMenuDrawer)
+                adapter?.notifyDataSetChanged()
+                toggleShowDrawer(drawerLayout)
+
+                navigateToPokemonType(navController, titleMenuDrawer)
+            })
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun resetMenuStateHome() {
+        viewModel.resetMenuState("Home")
+        binding.adapter?.notifyDataSetChanged()
+    }
+
+    private fun navigateToPokemonType(navController: NavController, titleMenuDrawer: String) {
+        navController.navigateUp()
+        val args = if (titleMenuDrawer != "Pokemon Type") {
+            Bundle().also {
+                it.putString("pokemonType", titleMenuDrawer)
+            }
+        } else {
+            Bundle().also {
+                viewModel.resetSubMenuState("normal")
+                it.putString("pokemonType", viewModel.menuDrawerList[1].subMenu[0].title)
+            }
+        }
+        navController.navigate(R.id.action_nav_home_to_nav_pokemon_type, args)
     }
 
     private fun toggleShowDrawer(drawerLayout: DrawerLayout) {

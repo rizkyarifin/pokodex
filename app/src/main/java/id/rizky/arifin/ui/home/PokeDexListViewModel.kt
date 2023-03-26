@@ -40,10 +40,6 @@ class PokeDexListViewModel @Inject constructor(
     @get:Bindable
     val pokemonList: List<Pokemon> by pokemonListFlow.asBindingProperty(viewModelScope, emptyList())
 
-    init {
-        Timber.d("init MainViewModel")
-    }
-
     @MainThread
     fun fetchNextPokemonList() {
         if (!isLoading) {

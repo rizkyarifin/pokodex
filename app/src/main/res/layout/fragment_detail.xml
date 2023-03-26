@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="id.rizky.arifin.ui.detail.DetailViewModel" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,13 +17,26 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundTint="@color/yellow"
+                app:gone="@{!vm.loading}"
+                android:theme="@style/progressBarYellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <include
                 android:id="@+id/layout_detail"
                 layout="@layout/content_pokemon_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:gone="@{vm.loading}" />
 
             <include
                 android:id="@+id/layout_sprites"
@@ -25,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                app:gone="@{vm.loading}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_detail" />
 
@@ -35,8 +56,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                app:gone="@{vm.loading}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_sprites" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_48sdp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_stat" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -2,7 +2,7 @@ package id.rizky.arifin.utils
 
 import id.rizky.arifin.R
 
-object PokemonColorsUtils{
+object PokemonColorsUtils {
 
     fun getTypeColor(type: String): Int {
         return when (type) {
@@ -23,7 +23,17 @@ object PokemonColorsUtils{
             "dragon" -> R.color.dragon
             "fairy" -> R.color.fairy
             "dark" -> R.color.dark
-            else -> R.color.gray_21
+            else -> R.color.darkgrey
+        }
+    }
+    fun getStatColor(stat: String): Int {
+        return when (stat) {
+            "hp" -> R.color.fire
+            "defense" -> R.color.md_orange_100
+            "special-defense" -> R.color.grass
+            "attack" -> R.color.water
+            "special-attack" -> R.color.yellow
+            else -> R.color.ghost
         }
     }
 

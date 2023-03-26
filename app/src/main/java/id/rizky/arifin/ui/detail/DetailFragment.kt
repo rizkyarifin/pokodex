@@ -29,12 +29,15 @@ class DetailFragment : BindingFragment<FragmentDetailBinding>(R.layout.fragment_
         super.onViewCreated(view, savedInstanceState)
 
         binding {
+            vm = viewModel
             layoutDetail.vm = viewModel
             layoutSprites.vm = viewModel
             layoutStat.vm = viewModel
+
             layoutDetail.rvAbilities.adapter = AbilityAdapter()
             layoutSprites.rvSprites.adapter = SpritesAdapter()
             layoutStat.rvStat.adapter = StatAdapter()
+
         }
     }
 }

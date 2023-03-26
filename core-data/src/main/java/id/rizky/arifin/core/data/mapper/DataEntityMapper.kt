@@ -23,18 +23,34 @@ object DataEntityMapper {
                 }
             },
             mutableListOf<String>().apply {
-                this.add(this@mapEntityToDomain.sprites.backDefault.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.backFemale.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.backShiny.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.backShinyFemale.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.frontDefault.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.frontFemale.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.frontShiny.orEmpty())
-                this.add(this@mapEntityToDomain.sprites.frontShinyFemale.orEmpty())
+                this@mapEntityToDomain.sprites.backDefault?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.backFemale?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.backShiny?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.backShinyFemale?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.frontDefault?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.frontFemale?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.frontShiny?.let {
+                    this.add(it)
+                }
+                this@mapEntityToDomain.sprites.frontShinyFemale?.let {
+                    this.add(it)
+                }
             },
             mutableListOf<Stat>().apply {
                 this@mapEntityToDomain.stats.forEach {
-                    this.add(Stat(it.stat?.name.orEmpty(), it.stat?.name.orEmpty()))
+                    this.add(Stat(it.stat?.name.orEmpty(), it.baseStat.toString()))
                 }
             }
         )

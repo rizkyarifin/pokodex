@@ -13,7 +13,7 @@ import id.rizky.arifin.databinding.FragmentPokedexListBinding
 class PokeDexListFragment :
     BindingFragment<FragmentPokedexListBinding>(R.layout.fragment_pokedex_list) {
 
-    val pokeDexListViewModel: PokeDexListViewModel by viewModels()
+    val viewModel: PokeDexListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,7 +26,7 @@ class PokeDexListFragment :
                 requireActivity().findNavController(R.id.nav_host_fragment_content_main)
                     .navigate(R.id.action_nav_home_to_detailDialogFragment, args)
             }
-            vm = pokeDexListViewModel
+            vm = viewModel
 
             pokedexListScrollView.viewTreeObserver?.addOnScrollChangedListener {
                 val view = pokedexListScrollView.getChildAt(pokedexListScrollView.childCount - 1)
@@ -35,7 +35,7 @@ class PokeDexListFragment :
                     view.bottom - (pokedexListScrollView.height + pokedexListScrollView.scrollY)
 
                 if (diff == 0) {
-                    pokeDexListViewModel.fetchNextPokemonList()
+                    viewModel.fetchNextPokemonList()
                 }
             }
         }

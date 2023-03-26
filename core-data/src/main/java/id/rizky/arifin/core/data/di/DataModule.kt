@@ -4,10 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.rizky.arifin.core.data.repository.DetailRepository
-import id.rizky.arifin.core.data.repository.DetailRepositoryImpl
-import id.rizky.arifin.core.data.repository.HomeRepository
-import id.rizky.arifin.core.data.repository.HomeRepositoryImpl
+import id.rizky.arifin.core.data.repository.*
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -21,4 +18,9 @@ internal interface DataModule {
     fun bindsDetailRepository(
         detailRepository: DetailRepositoryImpl
     ): DetailRepository
+
+    @Binds
+    fun bindsPokemonTypeRepository(
+        pokemonTypeRepository: PokemonTypeRepositoryImpl
+    ): PokemonTypeRepository
 }

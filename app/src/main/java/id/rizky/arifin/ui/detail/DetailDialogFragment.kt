@@ -40,8 +40,8 @@ class DetailDialogFragment :
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme).also {
             val metrics = resources.displayMetrics
-            it.behavior.peekHeight = metrics.heightPixels / 2
-            it.behavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            it.behavior.peekHeight = metrics.heightPixels
+            it.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
