@@ -44,7 +44,7 @@ class DetailDialogFragment :
         binding {
             vm = viewModel
             contentDetail.vm = viewModel
-            contentDetail.rvAbilities.adapter = AbilityAdapter()
+            contentDetail.adapter = AbilityAdapter()
 
             btnMoreDetail.setOnClickListener {
                 val args = Bundle().also {

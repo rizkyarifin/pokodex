@@ -9,6 +9,7 @@ import com.skydoves.bindables.bindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.rizky.arifin.core.data.repository.HomeRepository
 import id.rizky.arifin.core.model.Pokemon
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
@@ -27,6 +28,7 @@ class PokeDexListViewModel @Inject constructor(
         private set
 
     private val pokemonFetchingIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+    @OptIn(ExperimentalCoroutinesApi::class)
     private val pokemonListFlow = pokemonFetchingIndex.flatMapLatest { page ->
         homeRepository.fetchPokemonList(
             page = page,

@@ -32,7 +32,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 toggleShowDrawer(drawerLayout)
             }
 
-            Glide.with(this@MainActivity).load(R.mipmap.ic_logo).into(layoutNavHeader.imgLogoDrawer)
+            Glide.with(this@MainActivity).load(R.mipmap.ic_logo)
+                .into(layoutNavHeader.imgLogoDrawer)
             layoutNavHeader.btnCloseDrawer.setOnClickListener {
                 toggleShowDrawer(drawerLayout)
             }

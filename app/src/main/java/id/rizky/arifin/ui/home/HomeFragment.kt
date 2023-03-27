@@ -38,15 +38,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
-    }
-
     override fun onClickCheckPokeDex() {
         binding {
             viewPager.setCurrentItem(1, true)

@@ -8,6 +8,10 @@
         <variable
             name="vm"
             type="id.rizky.arifin.ui.detail.DetailViewModel" />
+
+        <variable
+            name="adapter"
+            type="id.rizky.arifin.ui.detail.SpritesAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +33,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_sprites"
+            app:adapter="@{adapter}"
             submitList="@{vm.pokemonDetail.sprites}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

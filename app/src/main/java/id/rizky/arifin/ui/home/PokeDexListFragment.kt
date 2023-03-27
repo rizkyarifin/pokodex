@@ -13,7 +13,7 @@ import id.rizky.arifin.databinding.FragmentPokedexListBinding
 class PokeDexListFragment :
     BindingFragment<FragmentPokedexListBinding>(R.layout.fragment_pokedex_list) {
 
-    val viewModel: PokeDexListViewModel by viewModels()
+    private val viewModel: PokeDexListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

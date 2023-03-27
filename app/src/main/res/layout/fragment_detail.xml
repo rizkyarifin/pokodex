@@ -7,6 +7,7 @@
         <variable
             name="vm"
             type="id.rizky.arifin.ui.detail.DetailViewModel" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -24,8 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:foregroundTint="@color/yellow"
-                app:gone="@{!vm.loading}"
                 android:theme="@style/progressBarYellow"
+                app:gone="@{!vm.loading}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
                 app:gone="@{vm.loading}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_sprites" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48sdp"

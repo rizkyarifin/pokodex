@@ -13,7 +13,7 @@ import id.rizky.arifin.core.data.repository.PokemonTypeRepository
 import id.rizky.arifin.core.model.PokemonData
 
 class PokemonTypeViewModel @AssistedInject constructor(
-    private val pokemonTypeRepository: PokemonTypeRepository,
+    pokemonTypeRepository: PokemonTypeRepository,
     @Assisted val pokemonType: String
 ) : BindingViewModel() {
 
