@@ -1,9 +1,7 @@
 package id.rizky.arifin.ui
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
@@ -12,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
-import com.google.android.material.navigation.NavigationView
 import com.skydoves.bindables.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import id.rizky.arifin.R
@@ -28,12 +25,15 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
 
         binding {
-            val drawerLayout: DrawerLayout = drawerLayout
-            val navView: NavigationView = navView
             val navController = findNavController(R.id.nav_host_fragment_content_main)
             navView.setupWithNavController(navController)
 
             toolbar.btnOpenDrawer.setOnClickListener {
+                toggleShowDrawer(drawerLayout)
+            }
+
+            Glide.with(this@MainActivity).load(R.mipmap.ic_logo).into(layoutNavHeader.imgLogoDrawer)
+            layoutNavHeader.btnCloseDrawer.setOnClickListener {
                 toggleShowDrawer(drawerLayout)
             }
 
@@ -48,8 +48,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 }
             })
 
-            vm = viewModel
-            adapter = MenuDrawerAdapter(itemOnClick = { titleMenuDrawer, position ->
+            adapter = MenuDrawerAdapter(itemOnClick = { titleMenuDrawer, _ ->
                 viewModel.resetMenuState(titleMenuDrawer)
                 adapter?.notifyDataSetChanged()
                 toggleShowDrawer(drawerLayout)
@@ -59,13 +58,15 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 } else {
                     navigateToPokemonType(navController, titleMenuDrawer)
                 }
-            }, itemSubMenuOnClick = { titleMenuDrawer, position ->
+            }, itemSubMenuOnClick = { titleMenuDrawer, _ ->
                 viewModel.resetSubMenuState(titleMenuDrawer)
                 adapter?.notifyDataSetChanged()
                 toggleShowDrawer(drawerLayout)
 
                 navigateToPokemonType(navController, titleMenuDrawer)
             })
+
+            vm = viewModel
         }
     }
 
@@ -92,15 +93,9 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     private fun toggleShowDrawer(drawerLayout: DrawerLayout) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+            drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            drawerLayout.openDrawer(GravityCompat.START);
-            val btnCloseDrawer = drawerLayout.findViewById<ImageView>(R.id.btn_close_drawer)
-            val imageLogo = drawerLayout.findViewById<ImageView>(R.id.img_logo_drawer)
-            Glide.with(this).load(R.mipmap.ic_logo).into(imageLogo)
-            btnCloseDrawer.setOnClickListener {
-                toggleShowDrawer(drawerLayout)
-            }
+            drawerLayout.openDrawer(GravityCompat.START)
         }
     }
 }

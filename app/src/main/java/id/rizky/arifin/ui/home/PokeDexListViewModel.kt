@@ -11,7 +11,6 @@ import id.rizky.arifin.core.data.repository.HomeRepository
 import id.rizky.arifin.core.model.Pokemon
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel

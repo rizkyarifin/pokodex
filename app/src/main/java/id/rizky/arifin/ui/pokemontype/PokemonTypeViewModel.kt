@@ -10,7 +10,6 @@ import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import id.rizky.arifin.core.data.repository.PokemonTypeRepository
-import id.rizky.arifin.core.model.Pokemon
 import id.rizky.arifin.core.model.PokemonData
 
 class PokemonTypeViewModel @AssistedInject constructor(

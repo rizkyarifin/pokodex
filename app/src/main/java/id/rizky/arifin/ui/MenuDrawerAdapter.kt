@@ -1,12 +1,10 @@
 package id.rizky.arifin.ui
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.BindingListAdapter
@@ -33,7 +31,7 @@ class MenuDrawerAdapter(
 
     override
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuDrawerViewHolder {
-        context = parent.context;
+        context = parent.context
         return parent.binding<ItemMenuDrawerBinding>(R.layout.item_menu_drawer)
             .let(::MenuDrawerViewHolder)
     }

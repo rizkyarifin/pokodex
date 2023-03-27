@@ -2,12 +2,7 @@ package id.rizky.arifin.ui.detail
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import androidx.activity.viewModels
-import androidx.annotation.VisibleForTesting
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior

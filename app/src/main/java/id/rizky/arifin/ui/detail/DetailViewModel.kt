@@ -11,7 +11,6 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import id.rizky.arifin.core.data.repository.DetailRepository
 import id.rizky.arifin.core.model.PokemonDetail
-import timber.log.Timber
 
 class DetailViewModel @AssistedInject constructor(
     detailRepository: DetailRepository,

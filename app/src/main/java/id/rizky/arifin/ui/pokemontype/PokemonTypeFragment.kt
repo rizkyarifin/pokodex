@@ -2,15 +2,12 @@ package id.rizky.arifin.ui.pokemontype
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import id.rizky.arifin.R
 import id.rizky.arifin.databinding.FragmentPokemonTypeBinding
-import id.rizky.arifin.ui.MainActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
