@@ -2,6 +2,7 @@ package id.rizky.arifin.binding
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -128,5 +129,16 @@ object ViewBinding {
                 PokemonColorsUtils.getTypeColor(type)
             )
         );
+    }
+
+    @JvmStatic
+    @BindingAdapter("tintBackgroundColorType")
+    fun bindTintBackgroundColorType(view: View, type: String) {
+        view.backgroundTintList =
+            ContextCompat.getColorStateList(
+                view.context,
+                PokemonColorsUtils.getTypeColor(type)
+            )
+
     }
 }

@@ -11,7 +11,8 @@ data class Pokemon(
     var page: Int = 0,
     @field:Json(name = "name")
     val name: String,
-    @field:Json(name = "url") val url: String
+    @field:Json(name = "url") val url: String,
+    var downloadStatus: DownloadStatus = DownloadStatus.NOT_DOWNLOADED
 ) {
 
     fun getImageUrl(): String {
@@ -21,5 +22,13 @@ data class Pokemon(
 
     fun getPokemonTypes(): List<String> = listOf("grass", "fighting")
 
-    fun getId(): String = url.split("/".toRegex()).dropLast(1).last()
+    private fun getId(): String = url.split("/".toRegex()).dropLast(1).last()
+
+    fun getIdString(): String = String.format("#%03d", getId().toInt())
+    enum class DownloadStatus {
+        NOT_DOWNLOADED,
+        DOWNLOADING,
+        DOWNLOAD_FINISH
+    }
+
 }

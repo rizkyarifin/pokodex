@@ -10,10 +10,13 @@
             name="vm"
             type="id.rizky.arifin.ui.detail.DetailViewModel" />
 
+        <variable
+            name="abilityAdapter"
+            type="id.rizky.arifin.ui.detail.AbilityAdapter" />
 
         <variable
-            name="adapter"
-            type="id.rizky.arifin.ui.detail.AbilityAdapter" />
+            name="typeAdapter"
+            type="id.rizky.arifin.ui.detail.TypeAdapter" />
 
     </data>
 
@@ -91,12 +94,11 @@
             android:id="@+id/tv_pokedex_detail_height_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_24sdp"
             android:fontFamily="@font/poppins_regular"
             android:text="@{vm.pokemonDetail.heightString}"
             android:textColor="@color/darkgrey"
             android:textSize="@dimen/_12ssp"
-            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_height_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_weight_value"
             app:layout_constraintTop_toTopOf="@+id/tv_pokedex_detail_height_label"
             tools:text="9999" />
 
@@ -114,15 +116,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_abilities"
-            adapter="@{adapter}"
+            adapter="@{abilityAdapter}"
             submitList="@{vm.pokemonDetail.getAbilitiesWithPrefix}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_16sdp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_abilities_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_height_value"
             app:layout_constraintTop_toBottomOf="@+id/tv_pokedex_detail_height_value"
             tools:itemCount="2"
             tools:listitem="@layout/item_pokemon_ability" />
@@ -139,15 +140,20 @@
             app:layout_constraintStart_toStartOf="@+id/tv_pokedex_detail_name"
             app:layout_constraintTop_toBottomOf="@+id/rv_abilities" />
 
-        <com.skydoves.androidribbon.RibbonRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_types"
-            bindPokemonTypes="@{vm.pokemonDetail.types}"
-            android:layout_width="wrap_content"
+            adapter="@{typeAdapter}"
+            submitList="@{vm.pokemonDetail.types}"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_24sdp"
-            app:layout_constraintStart_toEndOf="@+id/tv_pokedex_detail_type_label"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/rv_abilities"
             app:layout_constraintTop_toTopOf="@+id/tv_pokedex_detail_type_label"
-            app:ribbon_recycler_orientation="horizontal" />
+            app:ribbon_recycler_orientation="horizontal"
+            tools:listitem="@layout/item_pokemon_type" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,10 +1,10 @@
 package id.rizky.arifin.core.network.service
 
 import com.skydoves.sandwich.ApiResponse
-import id.rizky.arifin.core.network.model.mapper.PokemonDetailResponse
-import id.rizky.arifin.core.network.model.mapper.PokemonNameResponse
-import id.rizky.arifin.core.network.model.mapper.PokemonResponse
-import id.rizky.arifin.core.network.model.mapper.PokemonTypeResponse
+import id.rizky.arifin.core.network.model.PokemonDetailResponse
+import id.rizky.arifin.core.network.model.PokemonNameResponse
+import id.rizky.arifin.core.network.model.PokemonResponse
+import id.rizky.arifin.core.network.model.PokemonTypeResponse
 import javax.inject.Inject
 
 class PokedexClient @Inject constructor(

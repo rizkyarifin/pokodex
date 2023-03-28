@@ -1,6 +1,7 @@
 package id.rizky.arifin.ui
 
 import androidx.databinding.Bindable
+import androidx.lifecycle.viewModelScope
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.bindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,6 +9,7 @@ import id.rizky.arifin.core.data.repository.PokemonTypeRepository
 import id.rizky.arifin.core.model.MenuDrawer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
@@ -31,9 +33,10 @@ class MainViewModel @Inject constructor(
             MenuDrawer("Pokemon Type", false)
         )
     )
+        private set
 
     init {
-        runBlocking(Dispatchers.IO) {
+        viewModelScope.launch {
             pokemonTypeRepository.fetchPokemonType(
                 onComplete = { isLoading = false },
                 onError = { toastMessage = it }

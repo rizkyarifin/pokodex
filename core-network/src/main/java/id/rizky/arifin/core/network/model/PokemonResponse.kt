@@ -1,4 +1,4 @@
-package id.rizky.arifin.core.network.model.mapper
+package id.rizky.arifin.core.network.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

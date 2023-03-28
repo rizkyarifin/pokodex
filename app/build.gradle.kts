@@ -41,7 +41,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     buildFeatures {
@@ -54,7 +57,7 @@ android {
     }
 
     kotlinOptions {
-         jvmTarget = "11"
+        jvmTarget = "11"
     }
 
     packagingOptions {
@@ -67,6 +70,9 @@ android {
 dependencies {
     implementation(project(":core-data"))
     implementation(project(":core-model"))
+
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
 
     // androidx
     implementation(libs.material)

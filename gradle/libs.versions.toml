@@ -45,6 +45,8 @@ appCompat = "1.6.1"
 ssp = "1.1.0"
 calligraphy = "3.1.1"
 viewpump = "2.0.3"
+rxandroid = "3.0.2"
+rxjava = "3.1.5"
 
 [libraries]
 material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -93,6 +95,8 @@ progressView = { module = "com.github.skydoves:progressview", version.ref = "pro
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 sdp = { module = "com.intuit.sdp:sdp-android", version.ref = "ssp" }
 ssp = { module = "com.intuit.ssp:ssp-android", version.ref = "ssp" }
+rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

@@ -2,7 +2,7 @@ package id.rizky.arifin.core.data.mapper
 
 import id.rizky.arifin.core.model.PokemonDetail
 import id.rizky.arifin.core.model.Stat
-import id.rizky.arifin.core.network.model.mapper.PokemonDetailResponse
+import id.rizky.arifin.core.network.model.PokemonDetailResponse
 
 object DataEntityMapper {
 

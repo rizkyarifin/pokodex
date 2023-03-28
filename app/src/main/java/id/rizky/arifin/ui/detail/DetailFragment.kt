@@ -3,6 +3,7 @@ package id.rizky.arifin.ui.detail
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import id.rizky.arifin.R
@@ -27,14 +28,20 @@ class DetailFragment : BindingFragment<FragmentDetailBinding>(R.layout.fragment_
 
         binding {
             vm = viewModel
-
-            layoutDetail.adapter = AbilityAdapter()
-            layoutSprites.adapter = SpritesAdapter()
-            layoutStat.adapter = StatAdapter()
-
             layoutDetail.vm = viewModel
             layoutSprites.vm = viewModel
             layoutStat.vm = viewModel
+
+            layoutDetail.abilityAdapter = AbilityAdapter()
+            layoutDetail.typeAdapter = TypeAdapter { type ->
+                val args = Bundle().also {
+                    it.putString("pokemonType", type)
+                }
+                requireActivity().findNavController(R.id.nav_host_fragment_content_main)
+                    .navigate(R.id.action_detailFragment_to_nav_pokemon_type, args)
+            }
+            layoutSprites.adapter = SpritesAdapter()
+            layoutStat.adapter = StatAdapter()
 
         }
     }

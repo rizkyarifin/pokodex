@@ -33,7 +33,6 @@ class PokemonAdapter(val onItemClick: (String) -> Unit) :
                 onItemClick.invoke(pokemonData.pokemon.name)
             }
             binding.pokemon = pokemonData.pokemon
-            binding.tvPokedexId.text = "# ${pokemonData.pokemon.getId()}"
             binding.executePendingBindings()
         }
     }

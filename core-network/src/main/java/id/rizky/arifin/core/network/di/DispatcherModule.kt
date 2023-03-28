@@ -1,6 +1,5 @@
 package id.rizky.arifin.core.network.di
 
-import androidx.core.view.WindowInsetsAnimationCompat.Callback.DispatchMode
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

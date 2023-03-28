@@ -13,7 +13,7 @@ class SpacesItemDecoration : RecyclerView.ItemDecoration() {
         state: RecyclerView.State
     ) {
         if (parent.getChildAdapterPosition(view) != 0) {
-            outRect.left = 32
+            outRect.left = 24
         }
     }
 }

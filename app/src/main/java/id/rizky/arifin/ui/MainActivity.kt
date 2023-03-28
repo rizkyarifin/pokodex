@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.skydoves.bindables.BindingActivity
@@ -25,7 +26,10 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
 
         binding {
-            val navController = findNavController(R.id.nav_host_fragment_content_main)
+            val navHost =
+                supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+                        as NavHostFragment
+            val navController = navHost.navController
             navView.setupWithNavController(navController)
 
             toolbar.btnOpenDrawer.setOnClickListener {

@@ -44,7 +44,14 @@ class DetailDialogFragment :
         binding {
             vm = viewModel
             contentDetail.vm = viewModel
-            contentDetail.adapter = AbilityAdapter()
+            contentDetail.abilityAdapter = AbilityAdapter()
+            contentDetail.typeAdapter = TypeAdapter { type ->
+                val args = Bundle().also {
+                    it.putString("pokemonType", type)
+                }
+                requireActivity().findNavController(R.id.nav_host_fragment_content_main)
+                    .navigate(R.id.action_nav_home_to_nav_pokemon_type, args)
+            }
 
             btnMoreDetail.setOnClickListener {
                 val args = Bundle().also {

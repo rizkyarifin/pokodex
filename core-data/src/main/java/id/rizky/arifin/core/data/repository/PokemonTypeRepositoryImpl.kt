@@ -1,17 +1,13 @@
 package id.rizky.arifin.core.data.repository
 
-import android.util.Log
 import androidx.annotation.WorkerThread
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onFailure
 import com.skydoves.sandwich.suspendOnSuccess
-import id.rizky.arifin.core.data.mapper.DataEntityMapper.mapEntityToDomain
-import id.rizky.arifin.core.model.Pokemon
 import id.rizky.arifin.core.network.Dispatcher
 import id.rizky.arifin.core.network.PokedexAppDispatchers
 import id.rizky.arifin.core.network.service.PokedexClient
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
@@ -45,7 +41,7 @@ class PokemonTypeRepositoryImpl @Inject constructor(
         val response = pokedexClient.fetchPokemonByType(name)
         response.suspendOnSuccess {
             kotlinx.coroutines.delay(1000)
-            emit(data.results)
+            emit(data.results.take(10))
         }.onFailure {
             onError(message())
         }
