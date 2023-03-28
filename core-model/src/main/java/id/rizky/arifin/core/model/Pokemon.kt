@@ -1,9 +1,7 @@
 package id.rizky.arifin.core.model
 
-import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
 data class Pokemon(
@@ -11,8 +9,7 @@ data class Pokemon(
     var page: Int = 0,
     @field:Json(name = "name")
     val name: String,
-    @field:Json(name = "url") val url: String,
-    var downloadStatus: DownloadStatus = DownloadStatus.NOT_DOWNLOADED
+    @field:Json(name = "url") val url: String
 ) {
 
     fun getImageUrl(): String {
@@ -25,10 +22,4 @@ data class Pokemon(
     private fun getId(): String = url.split("/".toRegex()).dropLast(1).last()
 
     fun getIdString(): String = String.format("#%03d", getId().toInt())
-    enum class DownloadStatus {
-        NOT_DOWNLOADED,
-        DOWNLOADING,
-        DOWNLOAD_FINISH
-    }
-
 }

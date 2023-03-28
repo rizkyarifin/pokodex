@@ -68,8 +68,13 @@ android {
 }
 
 dependencies {
+    // modules
     implementation(project(":core-data"))
-    implementation(project(":core-model"))
+
+    // modules for unit test
+    testImplementation(project(":core-network"))
+    testImplementation(project(":core-test"))
+    testImplementation(libs.sandwich)
 
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
@@ -120,11 +125,11 @@ dependencies {
     implementation(libs.androidRibbon)
     implementation(libs.progressView)
 
-    // Local tests: jUnit, coroutines, Android runner
+    // unit test
     testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
-
-    // Instrumented tests: jUnit rules and runners
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.runner)
+    testImplementation(libs.turbine)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.coroutines.test)
 }

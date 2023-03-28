@@ -1,8 +1,6 @@
 package id.rizky.arifin.core.data.repository
 
-import android.util.Log
 import androidx.annotation.WorkerThread
-import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onFailure
 import com.skydoves.sandwich.suspendOnSuccess
@@ -15,7 +13,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
-import timber.log.Timber
 import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(

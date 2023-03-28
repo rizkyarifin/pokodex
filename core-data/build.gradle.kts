@@ -28,9 +28,6 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 33
-
-        testInstrumentationRunner = "id.rizky.arifin.core.testing.HiltTestRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildFeatures {
@@ -51,8 +48,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core-model"))
+    api(project(":core-model"))
     implementation(project(":core-network"))
+    testImplementation(project(":core-test"))
 
     // coroutines
     implementation(libs.coroutines)
@@ -66,7 +64,10 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    // Local tests: jUnit, coroutines, Android runner
+    // unit test
     testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
 }
